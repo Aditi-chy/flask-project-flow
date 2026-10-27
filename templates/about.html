@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
+</head>
+<body>
+
+    <header>
+        <a href="/dashboard" class="header-link">
+            <span class="material-symbols-outlined">home</span>
+            <span>Home</span>
+        </a>
+
+        <h1>About Us</h1>
+
+        <a href="/signout" class="header-link">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sign Out</span>
+        </a>
+    </header>
+
+    <main>
+        <section>
+            <h2>About the Project Management System</h2>
+
+            <p>
+                The Project Management System helps users organize
+                and manage their projects in one place.
+            </p>
+
+            <h3>Key Features</h3>
+
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">person_add</span>
+                    User registration and signin
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">add_task</span>
+                    Create and view projects
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">description</span>
+                    View detailed project information
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">edit</span>
+                    Update project details
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">delete</span>
+                    Delete projects
+                </li>
+                <li>
+                    <span class="material-symbols-outlined">shield</span>
+                    Secure access to user-specific pages
+                </li>
+            </ul>
+
+            <a href="/dashboard" class="back-button">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back to Dashboard
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Project Management System</p>
+    </footer>
+
+</body>
+</html>

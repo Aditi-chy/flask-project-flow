@@ -1,0 +1,572 @@
+:root {
+    --topbar-height: 64px;
+    --surface-color: #ffffff;
+    --background-color: #f7f9fc;
+    --border-color: #e5eaf1;
+    --text-primary: #202b3c;
+    --text-secondary: #718096;
+    --accent-color: #5279d8;
+    --accent-light: #edf3ff;
+    --accent-hover: #4167c5;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background-color);
+    color: var(--text-primary);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: var(--topbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 28px;
+    background: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.brand-icon,
+.brand .material-symbols-outlined,
+.brand .material-symbols-rounded {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 25px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-left: auto;
+}
+
+.workspace-label {
+    color: var(--text-secondary);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Supports both navbar HTML versions */
+
+.user-menu-wrapper,
+.user-menu:not(.user-dropdown) {
+    position: relative;
+}
+
+.user-button,
+.user-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 38px;
+    min-height: 38px;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.user-button:hover,
+.user-menu-button:hover {
+    background: #f5f7fb;
+    color: var(--accent-color);
+}
+
+.user-button .material-symbols-rounded,
+.user-button .material-symbols-outlined,
+.user-menu-button .material-symbols-rounded,
+.user-menu-button .material-symbols-outlined {
+    color: var(--text-secondary);
+    font-size: 22px;
+}
+
+/* Current Create Project dropdown */
+
+.user-menu-wrapper .user-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    z-index: 1100;
+    display: block;
+    width: max-content;
+    min-width: 170px;
+    max-width: calc(100vw - 24px);
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    box-shadow: 0 8px 24px rgba(31, 41, 55, 0.12);
+}
+
+.user-menu-wrapper .user-menu[hidden] {
+    display: none !important;
+}
+
+/* Original dashboard dropdown */
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    z-index: 1100;
+    display: none;
+    min-width: 160px;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    box-shadow: 0 8px 24px rgba(31, 41, 55, 0.12);
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.user-menu-wrapper .user-menu a,
+.user-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.user-menu-wrapper .user-menu a:hover,
+.user-dropdown a:hover {
+    background: #f5f7fb;
+}
+
+.user-menu-wrapper .user-menu a .material-symbols-rounded,
+.user-menu-wrapper .user-menu a .material-symbols-outlined,
+.user-dropdown a .material-symbols-rounded,
+.user-dropdown a .material-symbols-outlined {
+    color: var(--text-secondary);
+    font-size: 19px;
+}
+
+.dashboard-layout,
+.app-layout {
+    display: flex;
+    min-height: calc(100vh - var(--topbar-height));
+}
+
+.sidebar {
+    position: sticky;
+    top: var(--topbar-height);
+    align-self: flex-start;
+    flex: 0 0 215px;
+    width: 215px;
+    height: calc(100vh - var(--topbar-height));
+    overflow-y: auto;
+    padding: 25px 12px;
+    background: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-label {
+    margin: 0 12px 14px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.sidebar-navigation,
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-bottom {
+    margin-top: 24px;
+}
+
+.sidebar-link,
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 41px;
+    padding: 9px 12px;
+    border-radius: 7px;
+    color: #84909e;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link .material-symbols-outlined,
+.sidebar-link .material-symbols-rounded,
+.nav-link .material-symbols-outlined,
+.nav-link .material-symbols-rounded {
+    flex-shrink: 0;
+    font-size: 19px;
+}
+
+.sidebar-link:hover,
+.nav-link:hover {
+    background: #f5f7fb;
+    color: var(--text-primary);
+}
+
+.sidebar-link.active,
+.nav-link.active {
+    background: var(--accent-light);
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.dashboard-main,
+.page-main {
+    flex: 1;
+    min-width: 0;
+    min-height: calc(100vh - var(--topbar-height));
+    padding: 30px 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.page-heading h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.page-heading p,
+.section-heading p {
+    margin: 7px 0 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.projects-section {
+    width: 100%;
+    max-width: 1400px;
+}
+
+.section-heading {
+    margin-bottom: 17px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 155px;
+    padding: 19px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    border-color: #d2def8;
+    box-shadow: 0 4px 15px rgba(35, 55, 90, 0.04);
+}
+
+.project-card h3 {
+    margin: 0 0 8px;
+    overflow-wrap: anywhere;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.project-description {
+    margin: 0 0 18px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.project-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #edf0f5;
+}
+
+.project-date {
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.project-details-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.project-details-link .material-symbols-outlined,
+.project-details-link .material-symbols-rounded {
+    font-size: 17px;
+}
+
+.dashboard-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 24px;
+    padding-bottom: 10px;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 41px;
+    padding: 10px 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 7px;
+    background: var(--accent-color);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.primary-button:hover {
+    background: var(--accent-hover);
+}
+
+.primary-button .material-symbols-outlined,
+.primary-button .material-symbols-rounded {
+    font-size: 19px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 45px 20px;
+    background: #ffffff;
+    border: 1px dashed #d8e0ec;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.empty-state > .material-symbols-outlined,
+.empty-state > .material-symbols-rounded {
+    margin-bottom: 12px;
+    color: #94a3b8;
+    font-size: 36px;
+}
+
+.empty-state h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+}
+
+.empty-state p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.sidebar-link:focus-visible,
+.nav-link:focus-visible,
+.primary-button:focus-visible,
+.project-details-link:focus-visible,
+.user-menu-button:focus-visible,
+.user-button:focus-visible,
+.user-dropdown a:focus-visible,
+.user-menu-wrapper .user-menu a:focus-visible,
+.topbar a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+/* used to add styling so that it can adjust in samll screen like TAB or Mobile Phones */
+@media (max-width: 760px) {
+    .sidebar {
+        flex-basis: 180px;
+        width: 180px;
+        padding-inline: 9px;
+    }
+
+    .dashboard-main,
+    .page-main {
+        padding: 30px 24px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .topbar {
+        padding: 0 14px;
+        gap: 8px;
+    }
+
+    .brand {
+        gap: 6px;
+        font-size: 15px;
+    }
+
+    .brand-icon,
+    .brand .material-symbols-outlined,
+    .brand .material-symbols-rounded {
+        font-size: 22px;
+    }
+
+    .topbar-right {
+        gap: 8px;
+    }
+
+    .workspace-label {
+        font-size: 11px;
+    }
+
+    .dashboard-layout,
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static;
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        padding: 9px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-navigation,
+    .sidebar-nav {
+        flex-direction: row;
+        gap: 4px;
+        overflow-x: auto;
+    }
+
+    .sidebar-link,
+    .nav-link {
+        flex-shrink: 0;
+        gap: 5px;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .sidebar-link .material-symbols-outlined,
+    .sidebar-link .material-symbols-rounded,
+    .nav-link .material-symbols-outlined,
+    .nav-link .material-symbols-rounded {
+        font-size: 17px;
+    }
+
+    .dashboard-main,
+    .page-main {
+        padding: 22px 14px;
+    }
+
+    .page-heading h1 {
+        font-size: 23px;
+    }
+}
+
+.dashboard-footer {
+    padding: 18px 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    color: #6b7280;
+    font-size: 14px;
+}

@@ -1,0 +1,232 @@
+
+:root {
+    --topbar-height: 64px;
+    --surface-color: #ffffff;
+    --background-color: #f7f9fc;
+    --border-color: #e5eaf1;
+    --text-primary: #202b3c;
+    --text-secondary: #718096;
+    --accent-color: #5279d8;
+    --accent-light: #edf3ff;
+    --accent-hover: #4167c5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+/* Header */
+header {
+    min-height: var(--topbar-height);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+header a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+header a:hover {
+    color: var(--accent-color);
+}
+
+/* Main content */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 35px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(32, 43, 60, 0.04);
+}
+
+section h2 {
+    margin: 0 0 18px;
+    color: var(--text-primary);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+section p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Features */
+section h3 {
+    margin: 30px 0 16px;
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+section li {
+    margin-bottom: 12px;
+    padding: 14px 16px;
+    background-color: var(--accent-light);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Back to Dashboard */
+section > a {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 12px 20px;
+    background-color: var(--accent-color);
+    color: var(--surface-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+section > a:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Footer */
+footer {
+    padding: 18px 20px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border-top: 1px solid var(--border-color);
+}
+
+footer p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    header {
+        min-height: var(--topbar-height);
+        padding: 14px 16px;
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    header a {
+        font-size: 12px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    section {
+        padding: 22px 18px;
+    }
+
+    section h2 {
+        font-size: 21px;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+}
+
+/* Google Material Symbols */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header links */
+header .header-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+header .header-link .material-symbols-outlined {
+    font-size: 21px;
+}
+
+/* Feature icons */
+section li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+section li .material-symbols-outlined {
+    color: var(--accent-color);
+    font-size: 21px;
+    flex-shrink: 0;
+}
+
+/* Back button */
+section > .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+section > .back-button .material-symbols-outlined {
+    font-size: 19px;
+}
